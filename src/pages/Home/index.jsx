@@ -103,6 +103,8 @@ function Home() {
 
       if (error.code === 'auth/invalid-email' || error.code === 'auth/invalid-credential') {
         newErrors.general = 'Email ou senha inválidos.'
+      } else if (error.code === 'auth/email-already-in-use') {
+        newErrors.general = 'Email já cadastrado.'
       } else if (error.code === 'auth/too-many-requests') {
         newErrors.general = 'Muitas tentativas. Tente novamente mais tarde.'
       } else {
