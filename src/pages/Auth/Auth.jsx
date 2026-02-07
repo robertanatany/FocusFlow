@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import './style.css'
+import './Auth.css'
+import { Link } from 'react-router-dom'
 
-import { auth } from '../../firebase'
+import { auth } from '../../services/firebase'
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 /* import { sendPasswordResetEmail } from "firebase/auth"; */
 
@@ -19,10 +20,10 @@ import IconWarningCircle from '../../assets/warningCircle.svg?react'
 const passwordRequirements = [
   { id: 1, requirement: 'Pelo menos 8 caracteres' },
   { id: 2, requirement: 'Pelo menos uma letra maiúscula' },
-  { id: 5, requirement: 'Um número ou símbolo (@, #, $)' },
+  { id: 5, requirement: 'Um número ou símbolo (@, #, $)' }
 ]
 
-function Home() {
+function Auth() {
 
   //Estados para armazenar os dados do usuario
   const [name, setName] = useState('')
@@ -177,7 +178,7 @@ function Home() {
           <div className='input-password-group'>
             <div className='input-label-group'>
               <label htmlFor="password">Senha</label>
-              {!isRegistering && <a href="#">Esqueceu a senha?</a>}
+              {!isRegistering && <Link to='/recuperar-senha'>Esqueceu a senha?</Link>}
             </div>
             <div className={`input-icon-group ${error.password ? 'error-border' : ''}`}>
               <IconLock width={32} height={32} />
@@ -243,4 +244,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Auth;
